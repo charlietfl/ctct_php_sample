@@ -55,7 +55,7 @@ function MakeRequest($url,$method="GET", $body=null, $rqheaders=null)
     
 }
 
-// Functions are provided below for some basic actions
+// Functions are provided below for some basic actions with the Constant Contact V2 API.
 
 // API call to fetch a contact's information from their ID
 function getContact($id) {
@@ -64,7 +64,6 @@ function getContact($id) {
 
 // API call to update a contact. Additional extra parameter to specify action by VISITOR rather than OWNER to send notification emails.
 function updateContact($contact,$actionBy="OWNER") {
-	print_r(json_encode($contact));
 	return json_decode( MakeRequest("https://api.constantcontact.com/v2/contacts/".$contact->id."?api_key="._apiKey."&action_by=ACTION_BY_".$actionBy,"PUT",json_encode($contact)));
 }
 
@@ -80,6 +79,8 @@ function createCampaign($campaign) {
 
 //=================================
 // Example of removing a contact from a list. Uncomment to use.
+// Documentation on this API endpoint here: 
+// http://developer.constantcontact.com/docs/contacts-api/contacts-resource.html?method=PUT
 //=================================
 /*
 // Get the contact's data from Constant Contact
@@ -95,6 +96,8 @@ updateContact($contact);
 
 //=================================
 // Example of adding a contact to a list. Uncomment to use.
+// Documentation on this API endpoint here: 
+// http://developer.constantcontact.com/docs/contacts-api/contacts-resource.html?method=PUT
 //=================================
 /*
 // Get the contact's data from Constant Contact
@@ -111,6 +114,8 @@ updateContact($contact);
 
 //=================================
 // Example of creating a new contact. Uncomment to use.
+// Documentation on this API endpoint and contact data structure here: 
+// http://developer.constantcontact.com/docs/contacts-api/contacts-collection.html?method=POST
 //=================================
 /*
 // Create a contact object
@@ -129,6 +134,8 @@ createContact($contact);
 
 //=================================
 // Example of creating an email campaign. Uncomment to use.
+// Documentation on this API endpoint here: 
+// http://developer.constantcontact.com/docs/email-campaigns/email-campaigns-collection.html?method=POST
 //=================================
 /*
 // Create our campaign data
